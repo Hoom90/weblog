@@ -8,6 +8,12 @@ namespace FirstWeblog.Models
 {
     public class WeblogContext : DbContext
     {
+        public WeblogContext(DbContextOptions<WeblogContext> options)
+            : base(options)
+        {
+
+        }
+       
 
         DbSet<Member> Members { get; set; }
         DbSet<Log> Logs { get; set; }

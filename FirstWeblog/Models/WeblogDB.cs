@@ -9,6 +9,7 @@ namespace FirstWeblog.Models
     {
         public int MemberID { get; set; }
         public string Name { get; set; }
+        public string Family { get; set; }
 
         public List<Log> Logs { get; set; }
 
