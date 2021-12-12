@@ -2,6 +2,7 @@ using FirstWeblog.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +29,7 @@ namespace FirstWeblog
             services.AddControllersWithViews();
 
             services.AddDbContext<WeblogContext>(option => option.UseSqlServer(Configuration.GetConnectionString("defaultconnection")));
-            
+            services.AddTransient<WeblogContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,12 +55,13 @@ namespace FirstWeblog
                 app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                  name: "areas",
-                  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                    );
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                    );
             });
         }
     }

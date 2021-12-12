@@ -15,7 +15,7 @@ namespace FirstWeblog.Models
         }
        
 
-        DbSet<Member> Members { get; set; }
-        DbSet<Log> Logs { get; set; }
+        public DbSet<Member> Members { get; set; }
+        public DbSet<Log> Logs { get; set; }
     }
 }
